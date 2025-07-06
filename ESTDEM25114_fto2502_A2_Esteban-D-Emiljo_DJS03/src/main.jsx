@@ -3,15 +3,24 @@ import { createRoot } from "react-dom/client";
 import { DateUtils } from "../utils/DateUtils";
 import "./styles.css";
 
+/**
+ * Fetches podcast data from the API and displays it in a grid.
+ * @component
+ * @returns {JSX.Element} The rendered podcast grid.
+ */
 const DataFetcher = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  /**
+   * Fetch podcast data from the API on component mount.
+   * @function
+   */
   useEffect(() => {
     fetch("https://podcast-api.netlify.app/")
       .then((res) => res.json())
       .then((apiData) => {
-        setData(apiData); // <-- Use the response directly
+        setData(apiData);
         setLoading(false);
       });
   }, []);
@@ -34,6 +43,9 @@ const DataFetcher = () => {
   );
 };
 
+/**
+ * Mounts the React application to the DOM.
+ */
 createRoot(document.getElementById("app-root")).render(
   <StrictMode>
     <DataFetcher />
