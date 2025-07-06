@@ -14,6 +14,24 @@ const DataFetcher = () => {
         setLoading(false);
       });
   }, []);
+
+  if (loading) return <div>Loading...</div>;
+
+  return (
+    <div className="container">
+      {data.length === 0 && <div>No data found.</div>}
+      {data.map((item) => (
+        <div key={item.id}>
+          <img src={item.image} alt={item.title} />
+          <h2>{item.title}</h2>
+          <p>{item.description}</p>
+          <p>{item.seasons}</p>
+          <p>{item.genres}</p>
+          <p>{item.updated}</p>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 createRoot(document.getElementById("app-root")).render(
