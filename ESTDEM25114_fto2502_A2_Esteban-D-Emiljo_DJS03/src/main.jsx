@@ -16,7 +16,7 @@ const DataFetcher = () => {
       });
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className="loader"></div>;
 
   return (
     <div className="grid" id="podcastGrid">
@@ -25,7 +25,7 @@ const DataFetcher = () => {
         <div key={item.id} className="card">
           <img src={item.image} alt={item.title} />
           <h3>{item.title}</h3>
-          <p>{item.seasons}</p>
+          <p>{item.seasons} seasons</p>
           <p>{item.genres}</p>
           <p>{item.updated ? DateUtils.format(item.updated) : ""}</p>
         </div>
